@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Analyzer Result</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #202020;
+            color: #ffffff;
+        }
+        .navbar {
+            color: #ffffff;
+            background-color: #a200ff;
+        }
+        .link-light {
+            color: #ffffff;
+        }
+        pre {
+            color: inherit; /* Inherit text color */
+            background-color: inherit; /* Inherit background color */
+            border: none; /* Remove border */
+            white-space: pre-wrap; /* Allow text wrapping */
+            font-family: inherit; /* Inherit font family */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="text-bg-light p-3">
+            <a class="link-light" href="#"><h5>Django Text Analyzer</h5></a>
+        </div>
+    </nav>
+    <br>
+    
+    <center>
+        <h1><font style="color: rgb(22, 188, 22);">Analyzed Text</font></h1><br>
+        <h5>
+            <pre><p>{{ text2 }}</p></pre><br>
+            <pre><p>{{ text3 }}</p></pre><br>
+            <pre><p>{{ text1 }}</p></pre><br>
+            <pre><p>{{ text4 }}</p></pre><br>
+        </h5>
+    </center>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

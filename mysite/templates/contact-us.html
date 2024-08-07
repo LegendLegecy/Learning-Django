@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Django Text Analyzer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #202020;
+            color: #ffffff;
+        }
+        .navbar {
+            background-color: #a200ff;
+        }
+        .link-light {
+            color: #ffffff;
+        }
+        .content {
+            margin: 30px;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+    </style>
+    {% load static %}
+</head>
+<body>
+    <nav class="navbar">
+        <div class="text-bg-light p-3">
+            <a class="link-light" href="index.html"><h5>Django Text Analyzer</h5></a>
+        </div>
+    </nav>
+    <div class="content text-center">
+        <h1>Contact Us</h1>
+        <br>
+        <font style="font-size: 20px;">
+            <p>We value your feedback and are dedicated to providing exceptional service and support. Whether you have a question about our services, need technical assistance, or simply want to share your thoughts, our team is here to help. Your inquiries are important to us, and we aim to respond as promptly as possible to ensure your satisfaction.
+                <br> <br>
+                Our team is available to assist you with any issues you may encounter. From troubleshooting technical problems to providing detailed information about our offerings, we are committed to ensuring you have the best possible experience. Please provide as much detail as possible in your message so that we can address your concerns efficiently and effectively.
+                <br> <br>
+                We also welcome any suggestions or feedback you may have. Your input helps us improve our services and better meet the needs of our users. Whether it’s a feature you’d like to see, an improvement you’ve thought of, or general comments about your experience, we’re eager to hear from you. Our goal is to continually enhance our platform and your valuable feedback is a crucial part of that process.
+                <br> <br>
+                Thank you for taking the time to contact us. We look forward to hearing from you and will do our best to address your message in a timely manner. Please use the form below to send us your questions, comments, or suggestions, and a member of our team will be in touch with you shortly.
+                <br>
+            </p>
+        </font>
+        <img src="{% static 'contact.png' %}" alt="Contact Us" style="border-radius: 5%;" class="img-fluid mt-4">
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+

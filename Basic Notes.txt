@@ -1,0 +1,142 @@
+DAY 1
+__init__.py                 :   Tells that is it python package and necessary in any project.
+setting.py                  :   Keeps the high-level settings of project.
+urls.py                     :   Used to declare urls.
+wsgi                        :   Stands for WEB SERVER GATE INTEGRATION.
+
+
+
+
+
+DAY 2
+Django (python) is used as backend of website.
+
+
+
+
+DAY 3
+In settings.py :
+                SECRET-KEY  :   It is key which you have to hide for security purpose.
+                DEBUG=TRUE  :   Its true when using at local environment not in production.   
+                db.sqlite3 in DATABASES can be changed but for simplicity we use sqlite3.
+
+In urls.py :
+                By default url is admin/ but we can change it and also add it.
+
+
+
+
+DAY 4
+Import your main file in urls.py by "from . import MAIN-FILE-NAME"
+Use path in url.py like "path(ROUTE , FILE-NAME.FUNC-NAME , name= NAME-OF-PATH)".    (NAME-OF-PATH can be accessed from templates). 
+
+In main file:
+Give argument "request" to every function you're gonna use.
+Import HttpsResponse by using "from django.http import HttpsResponse".
+Return HttpsResponse("STRING") in every function.
+
+
+
+
+DAY 5
+Quiz :
+Make a personal navigator (use link in one file that migrate you into other websites)
+
+Answer :
+Add url "/personal-navigator" in urls.py
+Add function in main.py named PersonalNavigator that gives urls.
+
+
+
+
+DAY 6
+Giving route and path is called "Laying Pipeline".
+
+Quick Quiz:
+Make pipeline flow
+
+Answer: 
+Home can go to Analyze .
+Analyze can go to Home as well as Result.
+Result can go to Analyze.
+
+
+
+
+DAY 7
+Make directory named 'templates' in folder where manage.py is present.
+Add 'templates' in setting.py -> TEMPLATES -> DIRS
+Make html file in templates folder. 
+Add 'from django.shortcuts import render' in main.py. 
+To use template , use "return render(request , 'TEMPLATE-NAME')".
+Third argument of render is dictionary which contain variables, variables used in html.
+
+
+
+
+DAY 8
+Make text-analyzer.html and capitalize.html using CHAT-GPT.
+Text analyzer take text using 'request.GET.get()'.
+Give new text in capitalize.html to show capitalized text.
+
+
+
+
+DAY 9
+Modified capitalize.html as text-analyzer-result.html.
+Modified , text-analyzer.html.
+Now user give text and check boxes , based on boxes, we apply operations.
+Check boxes checked when "request.GET.get("BOX-NAME")=='on' ".
+
+
+
+
+DAY 10
+Just shoutout to Exercise 1 solution.
+
+
+
+
+DAY 11
+Just added title checkbox , and main function.
+
+
+
+
+DAY 12
+
+Exercise 2:
+Modify your code so when user check multiple boxes , user get multiple output based on checkboxes.
+
+Answer:
+Already done when I made the code , my code gives multiple output right from the begining when I code it.
+
+
+
+
+DAY 13
+Modified templates using https://www.getbootstrap.com and Chat GPT.
+Both text-analyzer.html and text-analyzer-result.html look gooood now.
+
+
+
+
+DAY 14
+Modified text-analyzer-result because its skipping new-line, so we used pre tag .
+But its using dejault text color so we use CHAT-GPT for that.
+
+
+
+
+DAY 15
+
+Difference between GET and POST request.
+GET is publically , Anyone can see GET request in url bar.
+POST is privately , None can see POST request in url bar.
+
+So Django use CSRF Token.
+CSRF stands for 'Cross Side Request Forgery'.
+it can be off by adding  {% csrf_token %} in same line of form tag.
+
+if we use '<form action="/analyzed" method="post">' instead of '<form action="/analyzed" method="get">' or '<form action="/analyzed">'
+we have to use 'request.POST.get()' instead of 'request.GET.get()' everytime.
