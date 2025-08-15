@@ -1,0 +1,817 @@
+.result-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.result-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.result-header p {
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.crypto-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+}
+
+.crypto-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.crypto-info {
+    flex: 1;
+}
+
+.crypto-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.crypto-symbol {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.price-container {
+    text-align: right;
+}
+
+.current-price {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.price-change {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.price-up {
+    color: var(--positive);
+}
+
+.price-down {
+    color: var(--negative);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.metric-card {
+    padding: 1.5rem;
+}
+
+.metric-title {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.metric-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.metric-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.chart-container {
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.chart-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.time-filters {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.time-filter {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+}
+
+.time-filter:hover, .time-filter.active {
+    background-color: var(--accent1);
+}
+
+#priceChart {
+    height: 400px;
+    width: 100%;
+}
+
+.analysis-section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.analysis-card {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.analysis-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.analysis-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    background-color: rgba(58, 90, 249, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+    color: var(--accent1);
+}
+
+.analysis-content {
+    line-height: 1.6;
+}
+
+.sentiment-indicator {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.sentiment-bar {
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--negative), #ffdd57, var(--positive));
+    flex: 1;
+    margin: 0 1rem;
+    position: relative;
+}
+
+.sentiment-marker {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border-radius: 50%;
+    top: -2px;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.sentiment-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+    .crypto-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .crypto-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .price-container {
+        text-align: center;
+        margin-top: 1rem;
+    }
+    
+    .time-filters {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+}
+
+/* Base Styles */
+.result-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Header Styles */
+.result-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.breadcrumb {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.result-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, #4f46e5, #10b981);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.subtitle {
+    color: #6b7280;
+    font-size: 1.125rem;
+}
+
+.highlight {
+    color: #4f46e5;
+    font-weight: 500;
+}
+
+/* Crypto Overview Card */
+.crypto-overview {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.crypto-main {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.crypto-icon {
+    width: 48px;
+    height: 48px;
+    margin-right: 1rem;
+}
+
+.crypto-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.crypto-info {
+    flex: 1;
+}
+
+.crypto-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.crypto-symbol {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-left: 0.5rem;
+}
+
+.crypto-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.price-change {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.875rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+}
+
+.price-change svg {
+    margin-right: 0.25rem;
+}
+
+.positive {
+    color: #10b981;
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+.negative {
+    color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.neutral {
+    color: #6b7280;
+    background-color: rgba(107, 114, 128, 0.1);
+}
+
+.crypto-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.stat-item {
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+}
+
+.stat-label {
+    color: #6b7280;
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    font-weight: 600;
+}
+
+/* Metrics Grid */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.metric-card {
+    padding: 1.25rem;
+    transition: transform 0.2s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+}
+
+.metric-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(79, 70, 229, 0.1);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    color: #4f46e5;
+}
+
+.metric-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.metric-title {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.metric-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.metric-description {
+    color: #6b7280;
+    font-size: 0.75rem;
+}
+
+/* Chart Container */
+.chart-container {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.chart-header h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.time-filters {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.time-filter {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    border-radius: 6px;
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.time-filter:hover {
+    background: #f3f4f6;
+}
+
+.time-filter.active {
+    background: #4f46e5;
+    color: white;
+    border-color: #4f46e5;
+}
+
+.chart-wrapper {
+    height: 300px;
+    position: relative;
+}
+
+.chart-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.chart-legend {
+    display: flex;
+    gap: 1rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.legend-color {
+    width: 12px;
+    height: 2px;
+    margin-right: 0.5rem;
+}
+
+.price-line {
+    background: #4f46e5;
+}
+
+.volume-bar {
+    background: #10b981;
+}
+
+/* Analysis Section */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: none;
+    color: #6b7280;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.btn-icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+.analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.analysis-card {
+    padding: 1.5rem;
+}
+
+.analysis-card.accent {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+    border: 1px solid rgba(79, 70, 229, 0.2);
+}
+
+.analysis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.analysis-title {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    gap: 0.75rem;
+}
+
+.analysis-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(79, 70, 229, 0.1);
+    border-radius: 8px;
+    color: #4f46e5;
+}
+
+.analysis-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.analysis-status {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-weight: 600;
+}
+
+.analysis-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.analysis-item {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.analysis-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.indicator-name {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.indicator-value {
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+/* Levels Container */
+.levels-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.level-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-radius: 8px;
+}
+
+.level-item.resistance {
+    background: rgba(239, 68, 68, 0.05);
+    border-left: 3px solid #ef4444;
+}
+
+.level-item.support {
+    background: rgba(16, 185, 129, 0.05);
+    border-left: 3px solid #10b981;
+}
+
+.level-item.current {
+    background: rgba(79, 70, 229, 0.05);
+    border-left: 3px solid #4f46e5;
+}
+
+.level-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.level-price {
+    font-weight: 600;
+}
+
+.level-strength {
+    font-size: 0.625rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Recommendation */
+.recommendation-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.recommendation-text h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.recommendation-text p {
+    color: #6b7280;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.confidence-meter {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.confidence-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.confidence-bar {
+    flex: 1;
+    height: 6px;
+    background: #e5e7eb;
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.confidence-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4f46e5, #10b981);
+    border-radius: 9999px;
+}
+
+.confidence-value {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #4f46e5;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: #4f46e5;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #4338ca;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.btn-secondary {
+    background: white;
+    color: #4f46e5;
+    border: 1px solid #e5e7eb;
+}
+
+.btn-secondary:hover {
+    background: #f9fafb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .result-header h1 {
+        font-size: 2rem;
+    }
+    
+    .crypto-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .time-filters {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+}

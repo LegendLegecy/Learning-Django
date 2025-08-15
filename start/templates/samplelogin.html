@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarkTech | Secure Access</title>
+    <link rel="icon" type="image/jpeg" href="{% static 'icon.jpg' %}">
+    <style>
+        :root {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #1a1a1a;
+            --accent-color:rgb(0, 195, 255);
+            --text-color: #e0e0e0;
+            --text-secondary: #a0a0a0;
+        }
+        
+        body {
+            background-color: var(--primary-dark);
+            color: var(--text-color);
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .login-container {
+            background-color: var(--secondary-dark);
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 2rem;
+            width: 300px;
+            box-shadow: 0 0 20px rgba(200, 0, 255, 0.39);
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .login-header h1 {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+        
+        .login-header p {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        .darktech-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            background-color: #111;
+            border: 1px solid #333;
+            color: var(--text-color);
+            border-radius: 3px;
+        }
+        
+        .darktech-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        
+        .darktech-checkbox {
+            margin-right: 0.5rem;
+            accent-color: var(--accent-color);
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--accent-color);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .login-button:hover {
+            background-color: #00cc6d;
+        }
+        
+        .error-message {
+            color: #ff4444;
+            font-size: 0.8rem;
+            margin-top: -0.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>DARKTECH</h1>
+            <p>Secure System Access</p>
+        </div>
+        
+        <form method="POST">
+            {% csrf_token %}
+            
+            {{form}}
+            <br>
+            <br>
+            <button type="submit" class="login-button">Access System</button>
+        </form>
+    </div>
+</body>
+</html>

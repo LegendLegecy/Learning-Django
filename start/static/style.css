@@ -1,0 +1,198 @@
+/* Basic styling */
+body {
+  background-color: black;
+  /* background-image: url('bg.avif'); */
+  background-size: cover; /* Scales image to cover entire background */
+  background-position: center; /* Centers image */
+  background-repeat: no-repeat; /* Prevents image from repeating */
+  background-attachment: fixed; /* Optional: keeps image fixed on scroll */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  color: #333;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+#gift-container {
+  color: white;
+  background-color: #000000;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 10px 10px 100px rgb(255, 255, 255);
+  width: 90%;
+  max-width: 400px;
+}
+#typewriter {
+  font-size: 1.5em;
+  color: #ff66a3;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid #ff66a3;
+  display: inline-block;
+  animation: blink-caret 0.5s step-end infinite;
+}
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #ff66a3;
+  }
+}
+#gift-btn {
+  background-color: #ff66a3;
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  margin-top: 20px;
+}
+#gift-btn:hover {
+  transform: scale(1.1);
+  background-color: #ff4d88;
+}
+#gift-message {
+  margin-top: 20px;
+  font-size: 1.5em;
+  display: none;
+  color: #ff66a3;
+}
+
+/* Confetti styling */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: confettiFall 2s linear infinite;
+}
+
+/* Confetti falling animation */
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-100vh) rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.love1 {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+
+.decoration {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.sprinkle {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+
+.yes-no-button {
+  height: 40px;
+  width: 70px;
+  border-radius: 20px;
+  color: rgb(255, 0, 174);
+  border: 2px solid rgb(255, 0, 174);
+  padding: 0px;
+  background-color: rgba(85, 85, 85, 0);
+}
+.yes-no-button:hover {
+  transform: scale(1.1);
+  background-color: #ffffff;
+}
+
+.text {
+  height: 25px;
+  width: auto;
+  color: rgb(63, 63, 63);
+  font-size: 15px;
+}
+
+.submit {
+  margin: 10px;
+  border-radius: 20px;
+  background-color: rgb(97, 2, 174);
+  color: white;
+  height: 40px;
+  width: 75px;
+}
+
+.po_gift{
+  display: block;
+}
+.lots_love{
+  display: block;
+}
+
+@media (max-width:1060px) {
+  body{
+    size: 100px;
+  }
+  
+  .lots_love{
+    position: absolute;
+    height: 35%;
+    bottom: 0%;
+    left: 10%;
+    z-index: 1;
+
+  }
+
+  .po_gift{
+    position: absolute;
+    height: 38%;
+    bottom: 0%;
+    right: 10%;
+  }
+
+  #gift-container{
+    position: absolute;
+    top: 22%;
+  }
+}
+
+
+@media (max-width:540px) {
+  
+  .lots_love{
+    display: none;
+
+  }
+
+  .po_gift{
+    position: absolute;
+    bottom: 0%;
+  }
+
+}
+
+@media (max-width:320px) {
+  .po_gift{
+    display: none;
+  }
+  #gift-container{
+    position: absolute;
+    top: 40%;
+  }
+}

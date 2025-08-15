@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🌟 Happy Birthday 🌟</title>
+    <link rel="stylesheet" href="{% static  'style.css' %}" />
+    <link rel="icon" type="png" href="{% static  'cake.png' %}" />
+  </head>
+
+  <body style="background-image: url('{% static  'bg.avif' %}')">
+    <img class="lots_love" src="{% static  'hp2.gif' %}" alt="" />
+    <div
+      id="gift-container"
+      style="
+        background-color: rgba(255, 255, 255, 0.801);
+        color: rgb(0, 0, 0);
+        border: solid black;
+      "
+    >
+      <h1
+        >Wishing Happy Birthday to my 🌟<br /><span id="typewriter"></span>
+      </h1>
+      <div id="gift-message">Surprise! You got a special gift!</div>
+    </div>
+    <img class="po_gift" src="{% static  'hp1.gif' %}" alt="" />
+    <img class="sprinkle" src="{% static  'sprinkle.gif' %}" alt="" />
+    <img class="decoration" src="{% static  'dec.gif' %}" alt="" />
+
+    <form
+      action="Happy_Birthday"
+      method="post"
+      style="color: rgb(0, 0, 0); position: absolute; top: 2%; right: 2%"
+    >
+      <div
+        id="message-div"
+        style="
+          border-radius: 20px;
+          font-size: larger;
+          background-color: rgba(255, 255, 255, 0.801);
+          padding-top: 20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        "
+      >
+        <b>Wanna Say Something To Faizan : </b>
+        <button type="button" id="yes-btn" class="yes-no-button">Yes</button>
+        <button type="button" id="no-btn" class="yes-no-button">No</button>
+        <br /><br />
+        <!-- Hidden text input and submit button -->
+        <div id="text-input-section" style="display: none">
+          <input
+            name="text"
+            class="text"
+            type="text"
+            placeholder="Write your message here"
+            style="border-radius: 10px; padding: 5px; width: 80%"
+          />
+          <br /><button class="submit" type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+
+    <script>
+      // Get the buttons and the text input section
+      const yesBtn = document.getElementById("yes-btn");
+      const noBtn = document.getElementById("no-btn");
+      const textInputSection = document.getElementById("text-input-section");
+
+      // Show the text input section when "Yes" is clicked
+      yesBtn.addEventListener("click", function () {
+        textInputSection.style.display = "block";
+      });
+
+      // Hide the text input section when "No" is clicked
+      noBtn.addEventListener("click", function () {
+        textInputSection.style.display = "none";
+      });
+
+      const phrases = ["Best Friend", "Only Friend"];
+      let currentPhraseIndex = 0;
+      const typingSpeed = 100;
+      const erasingSpeed = 50;
+      const pauseBetweenPhrases = 1000;
+      const typewriter = document.getElementById("typewriter");
+
+      function typeWriterEffect() {
+        let charIndex = 0;
+        let typing = true;
+
+        function type() {
+          if (typing) {
+            if (charIndex < phrases[currentPhraseIndex].length) {
+              typewriter.textContent +=
+                phrases[currentPhraseIndex].charAt(charIndex);
+              charIndex++;
+              setTimeout(type, typingSpeed);
+            } else {
+              typing = false;
+              setTimeout(type, pauseBetweenPhrases);
+            }
+          } else {
+            if (charIndex > 0) {
+              typewriter.textContent = phrases[currentPhraseIndex].substring(
+                0,
+                charIndex - 1
+              );
+              charIndex--;
+              setTimeout(type, erasingSpeed);
+            } else {
+              typing = true;
+              currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+              setTimeout(type, typingSpeed);
+            }
+          }
+        }
+
+        type();
+      }
+
+      launchConfetti();
+
+      function launchConfetti() {
+        setInterval(() => {
+          const confetti = document.createElement("div");
+          confetti.classList.add("confetti");
+
+          const colors = ["#ff0000", "#11ff00", "#8800ff", "#e1ff00"];
+          confetti.style.backgroundColor =
+            colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.left = Math.random() * 100 + "vw";
+          confetti.style.animationDuration = Math.random() * 2 + 3 + "s";
+
+          document.body.appendChild(confetti);
+
+          setTimeout(() => {
+            confetti.remove();
+          }, 5000);
+        }, 100);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        typeWriterEffect();
+        document
+          .getElementById("gift-btn")
+          ?.addEventListener("click", openGift);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Analysis Results | CryptoTech{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/result.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="result-header">
+    <h1><span class="gradient-text">BTC/USD</span> Analysis Results</h1>
+    <p>Comprehensive insights generated on {% now "F j, Y H:i" %} based on real-time market data and advanced technical indicators.</p>
+</div>
+
+<div class="crypto-card card">
+    <div class="crypto-icon">B</div>
+    <div class="crypto-info">
+        <div class="crypto-name">Bitcoin</div>
+        <div class="crypto-symbol">BTC</div>
+    </div>
+    <div class="price-container">
+        <div class="current-price">$42,856.34</div>
+        <div class="price-change price-up">+2.45% (24h)</div>
+    </div>
+</div>
+
+<div class="metrics-grid">
+    <div class="metric-card card">
+        <div class="metric-title">Market Cap</div>
+        <div class="metric-value">$820.34B</div>
+        <div class="metric-description">Rank #1 • Dominance 48.7%</div>
+    </div>
+    <div class="metric-card card">
+        <div class="metric-title">Volume (24h)</div>
+        <div class="metric-value">$28.45B</div>
+        <div class="metric-description">+15.3% from yesterday</div>
+    </div>
+    <div class="metric-card card">
+        <div class="metric-title">Circulating Supply</div>
+        <div class="metric-value">19.56M BTC</div>
+        <div class="metric-description">Max Supply 21M BTC</div>
+    </div>
+    <div class="metric-card card">
+        <div class="metric-title">All Time High</div>
+        <div class="metric-value">$68,789.63</div>
+        <div class="metric-description">Nov 10, 2021 (-37.7%)</div>
+    </div>
+</div>
+
+<div class="analysis-section">
+    <h2 class="section-title">Technical Analysis</h2>
+    <div class="analysis-card card">
+        <div class="analysis-title">
+            <div class="analysis-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 3V21H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M18 6L12 12L8 8L4 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            Trend Analysis
+        </div>
+        <div class="analysis-content">
+            {% for key, item in data.items %}
+            <div class="analysis-item">
+                <div class="analysis-item-title">{{ item.coinname }}</div>
+                <div class="analysis-item-description">{{ item.weekchange }}</div>
+                <div class="analysis-item-indicator">{{ item.status }}</div>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="action-buttons">
+    <a href="{% url 'home' %}" class="btn btn-outline">New Analysis</a>
+    <a href="#" class="btn btn-primary">Save Report</a>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/result.js' %}"></script>
+{% endblock %}

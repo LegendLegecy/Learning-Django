@@ -1,0 +1,255 @@
+{% extends "base_product.html" %} {% block title %}DarkTech | Our
+Products{%endblock %} {% block product_content %}
+<section class="product-listing">
+  <h1>Our Premium Products</h1>
+  <p class="subtitle">Discover our cutting-edge technology collection</p>
+
+  <div class="product-grid">
+    {% for product in products%}
+    <div class="product-card">
+      <div class="product-image">
+        <marquee
+          onmouseover="stop()"
+          onmouseout="start()"
+          style="
+            z-index: 999;
+            font-weight: bold;
+            color: cyan;
+            background-color: transparent;
+            padding: 10px;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+          "
+        >
+          {{product.name | title }} - {{product.price}}$
+        </marquee>
+        <img src="{{product.image.url}}" alt="{{product.name}}" />
+      </div>
+      <div class="product-details">
+        <h3>{{product.name | title}}</h3>
+        <p class="product-description">{{product.description | safe}}</p>
+        <div class="product-price">
+          <span class="current-price">{{product.price}}$</span>
+        </div>
+        <a href="/product-detail/{{product.slug}}" class="view-details-btn"
+          >View Details</a
+        >
+      </div>
+    </div>
+
+    {% endfor %}
+
+    <center>
+      <div class="simple-paginator" style="display:grid-row; position:relative; left:110%;">
+        <!-- Previous Button -->
+        <a href="?page={% if current_page > 1 %}{{ current_page|add:'-1' }}{% else %}1{% endif %}" class="paginator-arrow left-arrow" aria-label="Previous page">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      
+        <!-- Current Page Number -->
+        <div class="current-page">{{ current_page }}</div>
+      
+        <!-- Next Button -->
+        <a href="?page={% if current_page < lastpage %}{{ current_page|add:'1' }}{% else %}{{lastpage}}{% endif %}" class="paginator-arrow right-arrow" aria-label="Next page">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </center>
+
+    
+    <style>
+      .simple-paginator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1.5rem 0;
+        font-family: inherit;
+      }
+
+      .paginator-arrow {
+        background: var(--dark-secondary);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: var(--text-primary);
+      }
+
+      .paginator-arrow:hover {
+        background: rgba(187, 134, 252, 0.1);
+        border-color: var(--accent-purple);
+        color: var(--accent-purple);
+      }
+
+      .paginator-arrow svg {
+        width: 1.2rem;
+        height: 1.2rem;
+      }
+
+      .current-page {
+        background: var(--accent-purple);
+        color: var(--dark-primary);
+        border-radius: 6px;
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        box-shadow: 0 0 0 2px rgba(187, 134, 252, 0.3);
+      }
+    </style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const leftArrow = document.querySelector(".left-arrow");
+        const rightArrow = document.querySelector(".right-arrow");
+        const currentPage = document.querySelector(".current-page");
+        let page = 1;
+
+        function updatePage() {
+          currentPage.textContent = page;
+        }
+
+        leftArrow.addEventListener("click", function () {
+          if (page > 1) {
+            page--;
+            updatePage();
+          }
+        });
+
+        rightArrow.addEventListener("click", function () {
+          page++;
+          updatePage();
+        });
+      });
+    </script>
+  </div>
+</section>
+
+<style>
+  .product-listing h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(
+      90deg,
+      var(--accent-purple),
+      var(--accent-blue)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+
+  .subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .product-card {
+    background-color: var(--dark-800);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .product-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .product-card:hover .product-image img {
+    transform: scale(1.05);
+  }
+
+  .product-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(
+      135deg,
+      var(--accent-purple),
+      var(--accent-blue)
+    );
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .product-details {
+    padding: 1.5rem;
+  }
+
+  .product-details h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    min-height: 40px;
+  }
+
+  .product-price {
+    margin-bottom: 1.5rem;
+  }
+
+  .current-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-teal);
+  }
+
+  .original-price {
+    font-size: 1rem;
+    text-decoration: line-through;
+    color: var(--text-secondary);
+    margin-left: 0.5rem;
+  }
+
+  .view-details-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--dark-700);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+
+  .view-details-btn:hover {
+    background-color: var(--accent-purple);
+  }
+</style>
+{% endblock %}

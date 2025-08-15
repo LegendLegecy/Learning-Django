@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarkTech | About Us</title>
+    <link rel="icon" type="image/jpeg" href="{% static 'icon.jpg' %}">
+    <style>
+        :root {
+            --dark-bg: #121212;
+            --darker-bg: #0a0a0a;
+            --accent: #6e45e2;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .about-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .about-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--accent), #88d3ce);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .about-header p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-image {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .team-section {
+            margin-top: 5rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .team-member {
+            background: var(--darker-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--accent);
+        }
+        
+        .team-member h3 {
+            margin: 0.5rem 0;
+            color: var(--text-primary);
+        }
+        
+        .team-member p {
+            color: var(--text-secondary);
+            margin: 0.3rem 0;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include "header.html" %}
+   
+    <main class="about-container">
+        <section class="about-header">
+            <h1>Our Story</h1>
+            <p>We're redefining excellence in our industry through innovation, passion, and a commitment to quality that never wavers.</p>
+        </section>
+        
+        <section class="about-content">
+            <div class="about-text">
+                <h2>Who We Are</h2>
+                <p>Founded in 2015, we started as a small team with big dreams. Today, we've grown into an industry leader without losing our personal touch.</p>
+                <p>Our mission is to deliver exceptional value through cutting-edge solutions tailored to each client's unique needs. We believe in building relationships, not just making sales.</p>
+                <p>Every member of our team shares a commitment to excellence and a passion for pushing boundaries in our field.</p>
+            </div>
+            <div class="about-image">
+                <img src="{% static 'Teamwork.jpg' %}" alt="Our team working together">
+            </div>
+        </section>
+        
+        <section class="team-section">
+            <h2>Meet Our Leadership</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="{% static 'Jinwoo.jpg' %}" alt="Team member">
+                    <h3>Kakarot</h3>
+                    <p>CEO & Founder</p>
+                    <p>10+ years experience</p>
+                </div>
+                <div class="team-member">
+                    <img src="{% static 'Goku.jpg' %}" alt="Team member">
+                    <h3>Saturo Gojo</h3>
+                    <p>CTO</p>
+                    <p>Tech innovator</p>
+                </div>
+                <div class="team-member">
+                    <img src="{% static 'Gojo.jpg' %}" alt="Team member">
+                    <h3>Roronoa Zoro</h3>
+                    <p>Head of Design</p>
+                    <p>Creative visionary</p>
+                </div>
+                <div class="team-member">
+                    <img src="{% static 'Zoro.jpg' %}" alt="Team member">
+                    <h3>Uchiha Sasuke</h3>
+                    <p>Marketing Director</p>
+                    <p>Brand strategist</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    {% include "footer.html" %}
+</body>
+</html>

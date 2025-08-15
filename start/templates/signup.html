@@ -1,0 +1,424 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarkTech | Login & Signup</title>
+    <link rel="icon" type="image/jpeg" href="{% static 'icon.jpg' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #00c6ff;
+            --secondary: #0072ff;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .tech-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 114, 255, 0.1) 0%, transparent 30%),
+                        radial-gradient(circle at 70% 50%, rgba(0, 198, 255, 0.1) 0%, transparent 30%);
+            z-index: -1;
+        }
+        
+        .tech-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+        
+        .container {
+            background-color: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            width: 400px;
+            height: 600px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to bottom right, 
+                transparent, transparent, transparent, var(--primary));
+            transform: rotate(30deg);
+            animation: shine 6s linear infinite;
+            opacity: 0.1;
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(30deg) translate(-10%, -10%); }
+            100% { transform: rotate(30deg) translate(10%, 10%); }
+        }
+        
+        .form-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: all 0.6s ease-in-out;
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+            font-size: 28px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--light);
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 198, 255, 0.2);
+        }
+        
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px var(--primary);
+        }
+        
+        .toggle-form {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        .toggle-form a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-form a:hover {
+            text-decoration: underline;
+        }
+        
+        .login-container {
+            display: block;
+        }
+        
+        .signup-container {
+            display: none;
+            transform: translateY(20px);
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        
+        .container.active .login-container {
+            display: none;
+        }
+        
+        .container.active .signup-container {
+            display: block;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .tech-decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            opacity: 0.1;
+        }
+        
+        .decoration-1 {
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+        }
+        
+        .decoration-2 {
+            bottom: -30px;
+            left: -30px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+        }
+        
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+        
+        .remember-forgot a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .remember-forgot a:hover {
+            color: var(--primary);
+        }
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-container input {
+            margin-right: 8px;
+        }
+        
+        .social-login {
+            margin-top: 25px;
+            text-align: center;
+        }
+        
+        .social-login p {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .social-login p::before,
+        .social-login p::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-login p::before {
+            left: 0;
+        }
+        
+        .social-login p::after {
+            right: 0;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: rgba(0, 198, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .social-icon i {
+            color: var(--light);
+            font-size: 18px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="tech-bg"></div>
+    <div class="tech-grid"></div>
+    <div class="tech-decoration decoration-1"></div>
+    <div class="tech-decoration decoration-2"></div>
+    
+    <div class="container" id="container">
+        <div class="form-container">
+            <div class="login-container">
+                <h2 class="form-title">Welcome Back</h2>
+                {% if error %}
+                <div style="margin-bottom:20px;">
+                    <div style="background:rgba(255,0,0,0.1);color:#ff4d4f;padding:12px 16px;border-radius:8px;font-size:15px;text-align:center;border:1px solid #ff4d4f;">
+                        {{ error }}
+                    </div>
+                </div>
+                {% endif %}
+                <form method="post" action=''>
+                    {% csrf_token %}
+                    <div class="form-group" >
+                        <label for="login-email">Email</label>
+                        <input type="email" name='login-email' id="login-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" name='login-password' id="login-password" placeholder="Enter your password" required>
+                    </div>
+                    <div class="remember-forgot">
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="remember-me">
+                            <label for="remember-me">Remember me</label>
+                        </div>
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+                
+                <div class="social-login">
+                    <p>Or login with</p>
+                    <div class="social-icons">
+                        <div class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <div class="social-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="toggle-form">
+                    Don't have an account? <a id="show-signup">Sign up</a>
+                </div>
+            </div>
+            
+            <div class="signup-container">
+                <h2 class="form-title">Create Account</h2>
+                <form method="post" action='/'>
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" name="signup-name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" name="signup-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" name="signup-password" placeholder="Create a password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-confirm">Confirm Password</label>
+                        <input type="password" id="signup-confirm" name="signup-confirm" placeholder="Confirm your password" required>
+                    </div>
+                    <button type="submit" class="btn">Sign Up</button>
+                </form>
+                
+                <div class="toggle-form">
+                    Already have an account? <a id="show-login">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById('container');
+        const showSignup = document.getElementById('show-signup');
+        const showLogin = document.getElementById('show-login');
+        
+        showSignup.addEventListener('click', () => {
+            container.classList.add('active');
+        });
+        
+        showLogin.addEventListener('click', () => {
+            container.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

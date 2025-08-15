@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Django</title>
+</head>
+<body>
+    <center>
+        <h1>I'm learning django from WS Cube Tech.</h1>
+        <h3>{{Programmer_Name}} <br>  {{Age}}</h3>
+
+        {% for language in Languages %}
+        <!-- similarly 'forloop.counter0' , 'forloop.revcounter' , 'forloop.revcounter0' -->
+            <h4>
+                {{ forloop.counter }} : {{language}}
+            </h4>
+        {% endfor %}
+
+            
+        <table border="1" cellpadding="10">
+            <tr>
+                <th>App</th>
+                <th>Contact</th>
+            </tr>
+
+            <tr>
+                <td>Whatsapp</td>
+                <td>{{Contacts.Whatsapp}}</td>
+            </tr>
+            
+
+            <tr>
+                <td>Email 1</td>
+                <td>{{Contacts.Email_1}}</td>
+            </tr>
+            
+
+            <tr>
+                <td>Email 2</td>
+                <td>{{Contacts.Email_2}}</td>
+            </tr>
+            
+
+        </table>
+        
+        {% for number in Numbers %}
+            {% if number > 33  %}
+                {{forloop.counter}} : Pass <br>
+            
+            {% elif numbers == 33 %}
+                {{forloop.counter}} : Pass <br>
+            
+            {% else %}
+                {{forloop.counter}} : Fail <br>
+            {% endif %}
+        {% endfor %}
+
+    </center>
+</body>
+</html>

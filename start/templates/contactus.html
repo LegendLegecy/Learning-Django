@@ -1,0 +1,336 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DarkTech | Contact Us</title>
+    <style>
+      :root {
+        --dark-bg: #121212;
+        --darker-bg: #0a0a0a;
+        --accent: #6e45e2;
+        --text-primary: #e0e0e0;
+        --text-secondary: #b0b0b0;
+      }
+
+      body {
+        background-color: var(--dark-bg);
+        color: var(--text-primary);
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+      }
+
+      .contact-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+      }
+
+      .contact-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .contact-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(90deg, var(--accent), #88d3ce);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .contact-header p {
+        color: var(--text-secondary);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .contact-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+
+      .contact-info {
+        background: var(--darker-bg);
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .info-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 2rem;
+      }
+
+      .info-icon {
+        background: rgba(110, 69, 226, 0.1);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1.5rem;
+        flex-shrink: 0;
+      }
+
+      .info-icon i {
+        color: var(--accent);
+        font-size: 1.2rem;
+      }
+
+      .info-text h3 {
+        margin: 0 0 0.5rem;
+        color: var(--text-primary);
+      }
+
+      .info-text p,
+      .info-text a {
+        color: var(--text-secondary);
+        margin: 0;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .info-text a:hover {
+        color: var(--accent);
+      }
+
+      .contact-form {
+        background: var(--darker-bg);
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+        margin-right: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 0.8rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        color: var(--text-primary);
+        font-family: inherit;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
+
+      textarea.form-control {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .submit-btn {
+        background: var(--accent);
+        color: white;
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background 0.3s ease, transform 0.2s ease;
+      }
+
+      .submit-btn:hover {
+        background: #5d35c7;
+        transform: translateY(-2px);
+      }
+
+      .map-container {
+        margin-top: 4rem;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 400px;
+        border: none;
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        .contact-content {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="icon" type="image/jpeg" href="{% static 'icon.jpg' %}" />
+  </head>
+  <body>
+    {% include "header.html" %}
+
+    <main class="contact-container">
+      <section class="contact-header">
+        <h1>Get In Touch</h1>
+        <p
+          >We'd love to hear from you! Whether you have a question about our
+          services, pricing, or anything else, our team is ready to answer all
+          your questions.</p
+        >
+      </section>
+
+      <section class="contact-content">
+        <div class="contact-info">
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="info-text">
+              <h3>Our Location</h3>
+              <p>D-60 Sanjwal Cantt<br />Attock City, Punjab, Pakistan</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="info-text">
+              <h3>Email Us</h3>
+              <a href="mailto:legendslegecy1@gmail.com"
+                >legendslegecy1@gmail.com</a
+              ><br />
+              <a href="mailto:legendslegecy2@gmail.com"
+                >legendslegecy2@gmail.com</a
+              >
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="info-text">
+              <h3>Call Us</h3>
+              <p>+92 (306) 4073681</p>
+              <p>Mon-Fri: 9am-6pm</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-share-alt"></i>
+            </div>
+            <div class="info-text">
+              <h3>Social Media</h3>
+              <div class="social-links">
+                <a href="#" style="margin-right: 1rem"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a href="#" style="margin-right: 1rem"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+                <a href="#" style="margin-right: 1rem"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          {% if feedbackstatus == "success" %}
+          <div
+            class="alert alert-success"
+            style="
+              color: rgb(115, 0, 255);
+              margin-bottom: 1rem;
+              font-weight: bold;
+            "
+          >
+            Feedback sent successfully!
+          </div>
+          {% elif feedbackstatus == "error" %}
+          <div
+            class="alert alert-success"
+            style="
+              color: rgb(255, 0, 0);
+              margin-bottom: 1rem;
+              font-weight: bold;
+            "
+          >
+            Oops! Some Error Occured
+          </div>
+          {% endif %}
+
+          <form method="GET">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input
+                name="email"
+                type="email"
+                id="email"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input
+                name="subject"
+                type="text"
+                id="subject"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea
+                name="body"
+                id="message"
+                class="form-control"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d3804.0262187916437!2d72.41466586235482!3d33.792008574562786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d33.792327062456984!2d72.41493479618028!5e1!3m2!1sen!2sus!4v1749707439677!5m2!1sen!2sus"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </section>
+    </main>
+
+    {% include "footer.html" %}
+  </body>
+</html>

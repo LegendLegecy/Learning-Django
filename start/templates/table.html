@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarkTech | Table Generator</title>
+    <link rel="icon" type="image/jpeg" href="{% static 'icon.jpg' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --darker: #1e272e;
+            --light: #f5f6fa;
+            --accent: #fd79a8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: var(--darker);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            color: var(--secondary);
+        }
+        
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            background-color: rgba(108, 92, 231, 0.1);
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input[type="number"]:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(253, 121, 168, 0.3);
+        }
+        
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 50%;
+            margin-top: 1rem;
+        }
+        
+        button:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(253, 121, 168, 0.4);
+        }
+        
+        .table-container {
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .table-container.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        tr:hover {
+            background-color: rgba(108, 92, 231, 0.1);
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Multiplication Table Generator</h1>
+        
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="number">Enter a number:</label>
+                <input type="number" id="number" name="number" min="1" required placeholder="e.g. 5">
+            </div>
+            <button type="submit">Generate Table</button>
+        </form>
+        
+        {% if number %}
+            <div class="table-container show" id="table-container">
+                <h2>Multiplication Table for {{ number }}</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Multiplier</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for result in results %}
+                        <tr>
+                            <td>{{ number }} × {{ forloop.counter }} = </td>
+                            <td>{{ result }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="table-container" id="table-container">
+                <h2>Please enter a number to generate the multiplication table.</h2>
+            </div>
+        {% endif %}
+        
+        <div class="footer">
+            <p>© {% now "Y" %} Multiplication Table Generator</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple animation for the table container
+        document.addEventListener('DOMContentLoaded', function() {
+            const tableContainer = document.getElementById('table-container');
+            if (tableContainer) {
+                setTimeout(() => {
+                    tableContainer.classList.add('show');
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>

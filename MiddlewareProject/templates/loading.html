@@ -1,0 +1,55 @@
+{% extends "base.html" %} {% load static %} {% block title %}Analyzing Crypto
+Data | CryptoTech{% endblock %} {% block extra_css %}
+<link href="{% static 'css/loading.css' %}" rel="stylesheet" />
+{% endblock %} {% block content %}
+<div class="loading-container">
+  <div class="loading-animation">
+    <div class="cube cube-1"></div>
+    <div class="cube cube-2"></div>
+    <div class="cube cube-3"></div>
+    <div class="cube cube-4"></div>
+  </div>
+
+  <h2 class="loading-text">Analyzing Crypto Data</h2>
+  <p class="loading-subtext"
+    >Our advanced algorithms are processing the latest market data to provide
+    you with the most accurate insights.</p
+  >
+
+  <div class="progress-container">
+    <div class="progress-bar"></div>
+  </div>
+
+  <div class="loading-details">
+    <div class="detail-item">
+      <div class="detail-value" id="blocks-scanned">0</div>
+      <div class="detail-label">Blocks Scanned</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-value" id="market-sources">0</div>
+      <div class="detail-label">Market Sources</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-value" id="indicators">0</div>
+      <div class="detail-label">Indicators Calculated</div>
+    </div>
+  </div>
+</div>
+{% block extra_js %}
+<script src="{% static 'js/loading.js' %}"></script>
+<script>
+  setTimeout(() => {
+    fetch('/run_scraper/')
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                window.location.href = '/results/';
+            } else {
+                alert('Error: ' + data.message);
+            }
+        });
+  }, 1000);
+</script>
+{% endblock %}
+
+{% endblock %}

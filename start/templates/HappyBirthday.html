@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gift Received</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link rel="icon" type="image/png" href="{% static 'gift.png' %}" />
+  </head>
+
+  <body
+    style="position: fixed; height: 100%; width: 100%; background-image: url'{% static 'bg.png' %}');"
+  >
+    <a href="/happy-birthday2" id="gift-container" style="text-decoration: none;">
+      <h1>Hi, you received a gift from Faizan 🎁</h1>
+      <img class="love1" src="{% static 'h2.gif' %}" alt="" />
+      <button id="gift-btn">Open Gift</button>
+    </a>
+  </body>
+
+  <script>
+    document
+      .getElementById("gift-btn")
+      .addEventListener("click", function () {
+        // Use Django's URL template tag for generating the correct URL
+        const redirectUrl = "2";
+        window.location.href = redirectUrl;
+      });
+  </script>
+</html>

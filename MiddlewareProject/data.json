@@ -1,0 +1,92 @@
+{
+    "1": {
+        "coinname": "BTCBitcoin",
+        "weekchange": 3.58,
+        "status": "postitive"
+    },
+    "2": {
+        "coinname": "ETHEthereum",
+        "weekchange": 7.29,
+        "status": "postitive"
+    },
+    "3": {
+        "coinname": "XRPXRP",
+        "weekchange": 2.22,
+        "status": "postitive"
+    },
+    "4": {
+        "coinname": "BNBBNB",
+        "weekchange": 1.86,
+        "status": "postitive"
+    },
+    "5": {
+        "coinname": "SOLSolana",
+        "weekchange": 4.91,
+        "status": "postitive"
+    },
+    "6": {
+        "coinname": "DOGEDogecoin",
+        "weekchange": 5.14,
+        "status": "postitive"
+    },
+    "7": {
+        "coinname": "TRXTRON",
+        "weekchange": 0.99,
+        "status": "postitive"
+    },
+    "8": {
+        "coinname": "ADACardano",
+        "weekchange": 5.41,
+        "status": "postitive"
+    },
+    "9": {
+        "coinname": "HYPEHyperliquid",
+        "weekchange": 11.42,
+        "status": "postitive"
+    },
+    "10": {
+        "coinname": "SUISui",
+        "weekchange": 5.73,
+        "status": "postitive"
+    },
+    "11": {
+        "coinname": "LINKChainlink",
+        "weekchange": 5.93,
+        "status": "postitive"
+    },
+    "12": {
+        "coinname": "AVAXAvalanche",
+        "weekchange": 6.4,
+        "status": "postitive"
+    },
+    "13": {
+        "coinname": "XLMStellar",
+        "weekchange": 3.59,
+        "status": "postitive"
+    },
+    "14": {
+        "coinname": "BCHBitc",
+        "weekchange": 0.6,
+        "status": "postitive"
+    },
+    "15": {
+        "coinname": "LEOUN",
+        "weekchange": -4.67,
+        "status": "negative"
+    },
+    "16": {
+        "coinname": "TONToncoin",
+        "weekchange": 4.06,
+        "status": "postitive"
+    },
+    "17": {
+        "coinname": "SHIBSh",
+        "weekchange": 3.8,
+        "status": "postitive"
+    },
+    "18": {
+        "coinname": "HBARHedera",
+        "weekchange": 4.9,
+        "status": "postitive"
+    }
+}

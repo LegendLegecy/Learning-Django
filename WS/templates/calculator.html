@@ -1,0 +1,89 @@
+{% extends 'basic.html' %}
+
+{% block title %}
+    Calculator
+{% endblock %}
+
+{% block style %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .calculator-container {
+        position: absolute;
+        top: 10%;
+        background: #ffffff;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 30px 40px;
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .calculator-container h2 {
+        color: #333333;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    form input,
+    form select,
+    button {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 18px;
+    }
+
+    button {
+        background: #007bff;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background: #0056b3;
+    }
+
+    .result {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #e9f7ef;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+        border-radius: 5px;
+        font-size: 18px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="calculator-container">
+    <h1>Calculator</h1>
+    <form action="/calculator" method="GET">
+        {{ form.as_p }}
+        <button type="submit">Calculate</button>
+    </form>
+    {% if result != '' or result != None %}
+        <div class="result">
+            <Big>Result:   {{ result }}</Big>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'basic.html' %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+
+{% block body %}
+<center>
+    <h1><br><br>
+        <div style="text-decoration: underline;">Dashboard</div> <hr>
+        <h2>
+            {% if username != None %}
+                Welcome {{username}} !
+            {% endif %}
+        </h2>
+    </h1>
+</center>
+{% endblock %}
+
+
